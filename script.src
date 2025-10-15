@@ -1,0 +1,25 @@
+function post(){
+
+
+var formElements = document.getElementsByClassName("formValue");
+var formData = new FormData(); 
+    for(var i=0; i<formElements.length; i++)
+    {
+        formData.append(formElements[i].name, formElements[i].value);
+		console.log(formElements[i].name);
+		console.log(formElements[i].value);
+    }
+
+var xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function()
+        {
+            if(xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            {
+                console.log(xmlHttp.responseText);
+            }
+        }
+		
+		
+		xmlHttp.open("post", "tst.php");
+		xmlHttp.send(formData); 
+}
